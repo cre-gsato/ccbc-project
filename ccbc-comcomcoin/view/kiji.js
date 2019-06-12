@@ -7,7 +7,8 @@ import {
   Dimensions,
   Alert,
   ScrollView,
-  TextInput
+  TextInput,
+  TouchableHighlight
 } from 'react-native'
 import { Button, Icon, Avatar, Card } from 'react-native-elements'
 
@@ -43,84 +44,79 @@ export default class Kiji extends Component {
             <Text style={styles.screenTitleText}>記事を選択</Text>
           </View>
           {/* 1行目 */}
-          <View style={styles.articleLine}>
-            <View style={styles.articleTitleView}>
-              <Text style={styles.articleTitleText}>　　　ライフハック</Text>
+          <TouchableHighlight onPress={() => this.moveRead()}>
+            <View style={styles.articleLine}>
+              <View style={styles.articleTitleView}>
+                <Text style={styles.articleTitleText}>　　　ライフハック</Text>
+              </View>
+              <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                <Text style={styles.nonReadMark}>{'   1   '}</Text>
+              </View>
+              <View
+                style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}
+              >
+                <Icon name="chevron-right" type="font-awesome" color="white" />
+              </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'flex-end' }}>
-              <Text style={styles.nonReadMark}>{'   1   '}</Text>
-            </View>
-            <View style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}>
-              <Icon
-                name="chevron-right"
-                type="font-awesome"
-                color="white"
-                onPress={() => this.moveRead()}
-              />
-            </View>
-          </View>
+          </TouchableHighlight>
           {/* 2行目 */}
-          <View style={styles.articleLine}>
-            <View style={styles.articleTitleView}>
-              <Text style={styles.articleTitleText}>　　　おすすめの本</Text>
+          <TouchableHighlight onPress={() => this.moveRead()}>
+            <View style={styles.articleLine}>
+              <View style={styles.articleTitleView}>
+                <Text style={styles.articleTitleText}>　　　おすすめの本</Text>
+              </View>
+              <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                <Text style={styles.nonReadMark}>{'   2   '}</Text>
+              </View>
+              <View
+                style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}
+              >
+                <Icon name="chevron-right" type="font-awesome" color="white" />
+              </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'flex-end' }}>
-              <Text style={styles.nonReadMark}>{'   2   '}</Text>
-            </View>
-            <View style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}>
-              <Icon
-                name="chevron-right"
-                type="font-awesome"
-                color="white"
-                onPress={() => this.moveRead()}
-              />
-            </View>
-          </View>
+          </TouchableHighlight>
           {/* 3行目 */}
-          <View style={styles.articleLine}>
-            <View style={styles.articleTitleView}>
-              <Text style={styles.articleTitleText}>　　　イベント情報</Text>
+          <TouchableHighlight onPress={() => this.moveRead()}>
+            <View style={styles.articleLine}>
+              <View style={styles.articleTitleView}>
+                <Text style={styles.articleTitleText}>　　　イベント情報</Text>
+              </View>
+              <View style={{ flex: 1, alignItems: 'flex-end' }} />
+              <View
+                style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}
+              >
+                <Icon name="chevron-right" type="font-awesome" color="white" />
+              </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'flex-end' }} />
-            <View style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}>
-              <Icon
-                name="chevron-right"
-                type="font-awesome"
-                color="white"
-                onPress={() => this.moveRead()}
-              />
-            </View>
-          </View>
+          </TouchableHighlight>
           {/* 4行目 */}
-          <View style={styles.articleLine}>
-            <View style={styles.articleTitleView}>
-              <Text style={styles.articleTitleText}>　　　美味しいお店</Text>
+          <TouchableHighlight onPress={() => this.moveRead()}>
+            <View style={styles.articleLine}>
+              <View style={styles.articleTitleView}>
+                <Text style={styles.articleTitleText}>　　　美味しいお店</Text>
+              </View>
+              <View style={{ flex: 1, alignItems: 'flex-end' }} />
+              <View
+                style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}
+              >
+                <Icon name="chevron-right" type="font-awesome" color="white" />
+              </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'flex-end' }} />
-            <View style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}>
-              <Icon
-                name="chevron-right"
-                type="font-awesome"
-                color="white"
-                onPress={() => this.moveRead()}
-              />
-            </View>
-          </View>
+          </TouchableHighlight>
           {/* 5行目 */}
-          <View style={styles.articleLine}>
-            <View style={styles.articleTitleView}>
-              <Text style={styles.articleTitleText}>　　　その他</Text>
+          <TouchableHighlight onPress={() => this.moveRead()}>
+            <View style={styles.articleLine}>
+              <View style={styles.articleTitleView}>
+                <Text style={styles.articleTitleText}>　　　その他</Text>
+              </View>
+              <View style={{ flex: 1, alignItems: 'flex-end' }} />
+              <View
+                style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}
+              >
+                <Icon name="chevron-right" type="font-awesome" color="white" />
+              </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'flex-end' }} />
-            <View style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}>
-              <Icon
-                name="chevron-right"
-                type="font-awesome"
-                color="white"
-                onPress={() => this.moveRead()}
-              />
-            </View>
-          </View>
+          </TouchableHighlight>
         </View>
       )
     } else if (this.state.mode == 'read') {
@@ -152,15 +148,16 @@ export default class Kiji extends Component {
               <Text style={styles.screenTitleText}>イベント情報</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'flex-end' }}>
-              <Icon name="search" type="font-awesome" color="white" />
+              <Image
+                source={require('./../images/icons8-search-24_white.png')}
+              />
             </View>
             <View style={{ flex: 1, alignItems: 'flex-end', marginRight: 10 }}>
-              <Icon
-                name="edit"
-                type="font-awesome"
-                color="white"
-                onPress={() => this.moveInput()}
-              />
+              <TouchableHighlight onPress={() => this.moveInput()}>
+                <Image
+                  source={require('./../images/icons8-create-24_white.png')}
+                />
+              </TouchableHighlight>
             </View>
           </View>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -183,11 +180,11 @@ export default class Kiji extends Component {
                       </Text>
                     </View>
                     <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                      <Icon
-                        name="pencil"
-                        type="font-awesome"
-                        onPress={() => this.moveInput()}
-                      />
+                      <TouchableHighlight onPress={() => this.moveInput()}>
+                        <Image
+                          source={require('./../images/icons8-pencil-24.png')}
+                        />
+                      </TouchableHighlight>
                     </View>
                   </View>
                   <Text style={{ fontSize: 16, color: 'blue' }}>
@@ -344,21 +341,18 @@ export default class Kiji extends Component {
                 />
               </View>
             </View>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }}>
-                <Button
-                  title="save"
-                  onPress={() => this.moveRead()}
-                  textStyle={{ fontSize: 30 }}
-                  buttonStyle={{
-                    backgroundColor: 'gray',
-                    borderRadius: 10
-                  }}
-                  icon={{ name: 'sign-in', type: 'font-awesome' }}
-                />
-              </View>
-            </View>
           </Card>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}>
+              <TouchableHighlight onPress={() => this.moveRead()}>
+                <View style={styles.saveButton}>
+                  <View style={styles.articleTitleView}>
+                    <Text style={styles.articleTitleText}>投稿する</Text>
+                  </View>
+                </View>
+              </TouchableHighlight>
+            </View>
+          </View>
         </View>
       )
     }
@@ -375,13 +369,22 @@ const styles = StyleSheet.create({
     color: 'white',
     padding: 10
   },
+  saveButton: {
+    borderRadius: 20,
+    alignItems: 'center',
+    marginTop: 30,
+    marginLeft: 10,
+    marginRight: 10,
+    backgroundColor: '#6666DD',
+    flexDirection: 'row'
+  },
   articleLine: {
     borderRadius: 20,
     alignItems: 'center',
     marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
-    backgroundColor: '#660000',
+    backgroundColor: '#AA0000',
     flexDirection: 'row'
   },
   articleTitleView: {
