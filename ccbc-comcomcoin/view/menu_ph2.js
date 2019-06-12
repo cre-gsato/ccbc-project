@@ -38,6 +38,24 @@ export default class MenuPh2 extends Component {
   onPressShoppingButton = () => {
     this.props.navigation.navigate('Shopping')
   }
+  onPressGroupButton = () => {
+    this.props.navigation.navigate('LoginGroup2')
+  }
+  onPressLoginButton = () => {
+    this.props.navigation.navigate('Login2')
+  }
+  onPressHomeButton = () => {
+    this.props.navigation.navigate('Home2')
+  }
+  onPressKokokuButton = () => {
+    this.props.navigation.navigate('Kokoku')
+  }
+  onPressOshiraseButton = () => {
+    this.props.navigation.navigate('Oshirase')
+  }
+  onPressSaishinKijiButton = () => {
+    this.props.navigation.navigate('SaishinKiji')
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -101,6 +119,36 @@ export default class MenuPh2 extends Component {
         <View style={styles.font_view}>
           <Text style={styles.font} onPress={this.onPressShoppingButton}>
             【支払機能】支払
+          </Text>
+        </View>
+        <View style={styles.font_view}>
+          <Text style={styles.font} onPress={this.onPressGroupButton}>
+            【ログイン機能】グループ認証
+          </Text>
+        </View>
+        <View style={styles.font_view}>
+          <Text style={styles.font} onPress={this.onPressLoginButton}>
+            【ログイン機能】ログイン
+          </Text>
+        </View>
+        <View style={styles.font_view}>
+          <Text style={styles.font} onPress={this.onPressHomeButton}>
+            【ホーム機能】ホーム
+          </Text>
+        </View>
+        <View style={styles.font_view}>
+          <Text style={styles.font} onPress={this.onPressKokokuButton}>
+            【ホーム機能】広告
+          </Text>
+        </View>
+        <View style={styles.font_view}>
+          <Text style={styles.font} onPress={this.onPressOshiraseButton}>
+            【ホーム機能】お知らせ
+          </Text>
+        </View>
+        <View style={styles.font_view}>
+          <Text style={styles.font} onPress={this.onPressSaishinKijiButton}>
+            【ホーム機能】最新の記事
           </Text>
         </View>
       </View>

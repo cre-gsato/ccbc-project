@@ -93,6 +93,38 @@ export const titleItems = (
   </div>
 )
 
+export const titleItems2 = (
+  <div
+    style={{
+      zIndex: 1,
+      overflow: 'hidden',
+      position: 'relative',
+      display: 'flex',
+      width: '100%',
+      /* 左右中央寄せ */
+      webkitBoxPack: 'center',
+      msFlexPack: 'center',
+      justifyContent: 'center'
+    }}
+  >
+    <img src="/images/ComComCoin_logo.png" width="400" height="40" />
+    {/* <Avatar src="/images/cvircy.png" />
+    <Typography
+      variant="title"
+      color="inherit"
+      style={{
+        color: 'white',
+        fontSize: 'xx-large',
+        fontWeight: 'bold',
+        marginLeft: 10
+      }}
+      noWrap
+    >
+      {systemName}
+    </Typography> */}
+  </div>
+)
+
 export var kanriListItems = function() {
   var loginInfos = JSON.parse(sessionStorage.getItem('loginInfo'))
   if (loginInfos !== null) {

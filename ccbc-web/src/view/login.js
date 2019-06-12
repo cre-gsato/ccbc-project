@@ -274,11 +274,11 @@ class TextFields extends React.Component {
                 <td colspan="2">
                   <br />
                   <br />
-                  {/* <Typography component="p" align="right">
+                  <Typography component="p" align="right">
                     <a href="/sample">
                       ※画面モックサンプルメニューへ遷移（実装用）
                     </a>
-                  </Typography> */}
+                  </Typography>
                   <Typography component="p" align="right">
                     ※ID、パスワード紛失時は管理者に連絡してください
                   </Typography>

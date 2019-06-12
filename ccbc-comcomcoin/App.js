@@ -28,6 +28,12 @@ import ChatCoinForm from './view/chat_coin'
 
 import KijiForm from './view/kiji'
 import ShoppingForm from './view/shopping'
+import LoginGroupForm2 from './view/login_group2'
+import LoginForm2 from './view/login2'
+import HomeForm2 from './view/home2'
+import KokokuForm from './view/kokoku'
+import OshiraseForm from './view/oshirase'
+import SaishinKijiForm from './view/saishinKiji'
 
 /******* Navigator *******/
 
@@ -53,7 +59,13 @@ var HomeNavigator = createStackNavigator(
     ChatMsg: { screen: ChatMsgForm },
     ChatCoin: { screen: ChatCoinForm },
     Kiji: { screen: KijiForm },
-    Shopping: { screen: ShoppingForm }
+    Shopping: { screen: ShoppingForm },
+    LoginGroup2: { screen: LoginGroupForm2 },
+    Login2: { screen: LoginForm2 },
+    Home2: { screen: HomeForm2 },
+    Kokoku: { screen: KokokuForm },
+    Oshirase: { screen: OshiraseForm },
+    SaishinKiji: { screen: SaishinKijiForm }
   },
   {
     initialRouteName: 'MenuPh2',
