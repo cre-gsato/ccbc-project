@@ -19,12 +19,30 @@ import { Manager, Target, Popper } from 'react-popper'
 import Grow from '@material-ui/core/Grow'
 import Paper from '@material-ui/core/Paper'
 import MenuList from '@material-ui/core/MenuList'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import AddIcon from '@material-ui/icons/Add'
+import Icon from '@material-ui/core/Icon'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const drawerWidth = 240
 
 const styles = theme => ({
   root: {
     flexGrow: 1
+  },
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto'
+  },
+  table: {
+    minWidth: 700
   },
   appFrame: {
     zIndex: 1,
@@ -179,8 +197,69 @@ const styles = theme => ({
   },
   appBarColorDefault: {
     backgroundColor: 'rgba(255, 136, 0, 0.92)'
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 350
+  },
+  textField2: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 150
+  },
+  button: {
+    margin: theme.spacing.unit
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit
+  },
+  input: {
+    display: 'none'
+  },
+  menu: {
+    width: 200
   }
 })
+let id = 0
+function createData(name, price) {
+  id += 1
+  return { id, name, price }
+}
+
+const rows = [
+  createData('お茶', 100),
+  createData('ジュース', 120),
+  createData('お煎餅', 120),
+  createData('ポテトチップス', 130),
+  createData('チョコレート', 100)
+]
+const currencies = [
+  {
+    value: '0',
+    label: '　'
+  },
+  {
+    value: '500',
+    label: '～500円'
+  },
+  {
+    value: '1000',
+    label: '501円～1000円'
+  },
+  {
+    value: '1500',
+    label: '1001円～1500円'
+  },
+  {
+    value: '2000',
+    label: '1501円～2000円'
+  }
+]
 
 class ComShohinMenteForm extends React.Component {
   state = {
@@ -227,6 +306,12 @@ class ComShohinMenteForm extends React.Component {
     }
 
     this.setState({ open2: false })
+  }
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    })
   }
 
   render() {
@@ -352,7 +437,142 @@ class ComShohinMenteForm extends React.Component {
           >
             <div className={classes.drawerHeader} />
             {/* 下のdivの中身を画面に応じて変えること。ヘッダ部分は共通のため、触らないこと。 */}
-            <div>ここに画面モックアップを実装すること</div>
+            <div>
+              <font size="5">商品検索</font>
+              <div align="right">
+                <Button
+                  variant="outlined"
+                  size="small"
+                  className={classes.button}
+                >
+                  検索
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  className={classes.button}
+                >
+                  クリア
+                </Button>
+              </div>
+              <div />
+              <form className={classes.container} noValidate autoComplete="off">
+                <TextField
+                  id="shohinmei"
+                  label="商品名"
+                  defaultValue=""
+                  className={classes.textField}
+                  margin="normal"
+                />
+                <TextField
+                  id="amount"
+                  select
+                  label="金額"
+                  className={classes.textField}
+                  value={this.state.currency}
+                  onChange={this.handleChange('currency')}
+                  SelectProps={{
+                    native: true,
+                    MenuProps: {
+                      className: classes.menu
+                    }
+                  }}
+                  margin="normal"
+                >
+                  {currencies.map(option => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </TextField>
+              </form>
+              <br />
+              <div>
+                <font size="5">検索結果</font>
+              </div>
+              <Paper className={classes.root}>
+                <div align="right">
+                  <Button
+                    variant="fab"
+                    mini
+                    color="primary"
+                    aria-label="Add"
+                    className={classes.button}
+                  >
+                    <AddIcon />
+                  </Button>
+                  <Button
+                    variant="fab"
+                    mini
+                    color="secondary"
+                    aria-label="Edit"
+                    className={classes.button}
+                  >
+                    <Icon>edit_icon</Icon>
+                  </Button>
+
+                  <Button
+                    variant="fab"
+                    mini
+                    aria-label="Delete"
+                    className={classes.button}
+                  >
+                    <DeleteIcon />
+                  </Button>
+                </div>
+                <Table className={classes.table}>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        <font size="3">商品名</font>
+                      </TableCell>
+                      <TableCell>
+                        <font size="3">金額</font>
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map(row => {
+                      return (
+                        <TableRow key={row.id}>
+                          <TableCell component="th" scope="row">
+                            <TextField
+                              id="shohinmei"
+                              defaultValue={row.name}
+                              className={classes.textField}
+                              margin="normal"
+                            />
+                          </TableCell>
+                          <TableCell numeric>
+                            <TextField
+                              id="price"
+                              defaultValue={row.price}
+                              className={classes.textField2}
+                              margin="normal"
+                              inputProps={{
+                                style: {
+                                  textAlign: 'right'
+                                }
+                              }}
+                            />
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                  </TableBody>
+                </Table>
+              </Paper>
+            </div>
+            <div align="right">
+              <Button
+                variant="outlined"
+                size="small"
+                className={classes.button}
+              >
+                確定
+              </Button>
+            </div>
           </main>
           {after}
         </div>
